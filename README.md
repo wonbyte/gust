@@ -3,6 +3,7 @@
 [![CI](https://github.com/wonbyte/gust/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/wonbyte/gust/actions/workflows/ci.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/wonbyte/gust?cache=v1)](https://goreportcard.com/report/github.com/wonbyte/gust)
 [![GoDoc](https://godoc.org/github.com/wonbyte/gust?status.svg)](https://godoc.org/github.com/wonbyte/gust)
+![Coverage](https://raw.githubusercontent.com/wonbyte/gust/badges/.badges/main/coverage.svg)
 
 **gust** is a simple, thread-safe, generic caching library designed for caching
 a small number of items. It periodically removes stale items and helps mitigate
