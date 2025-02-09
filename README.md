@@ -47,22 +47,17 @@ item := cache.Get("item")
 
 ## API Methods
 
-- **Get(key K) V**
-  Retrieves the value associated with the given key. If the item is not present
+- **Get**(key K) V - Retrieves the value associated with the given key. If the item is not present
   or has expired (beyond the grace window), it is fetched using the fetcher function.
 
-- **Set(key K, value V)**
-  Manually sets a value in the cache.
+- **Set**(key K, value V) - Manually sets a value in the cache.
 
-- **Replace(key K, value V)**
-  Replaces an existing value and extends its TTL. If the key does not exist, the
+- **Replace**(key K, value V) - Replaces an existing value and extends its TTL. If the key does not exist, the
   operation is a no-op.
 
-- **Delete(key K)**
-  Removes an item from the cache.
+- **Delete**(key K) - Removes an item from the cache.
 
-- **Clear()**
-  Removes all items from the cache.
+- **Clear**() - Removes all items from the cache.
 
 ## Summary
 
