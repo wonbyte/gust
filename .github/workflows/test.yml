@@ -1,0 +1,33 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: go.mod
+
+    - name: Test
+      run: go test -race -count=10 -timeout=60s -parallel=4 -covermode=atomic -coverprofile=./cover.out -coverpkg=github.com/wonbyte/gust ./...
+
+
+    - name: check test coverage
+      uses: vladopajic/go-test-coverage@v2
+      with:
+        config: ./.testcoverage.yml
+        git-token: ${{ github.ref_name == 'main' && secrets.GITHUB_TOKEN || '' }}
+        git-branch: badges
