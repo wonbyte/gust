@@ -196,7 +196,7 @@ func (c *Cache[K, T]) startReaper(ticker *time.Ticker) {
 	}
 }
 
-// Stop signals the background reaper to terminate.
+// stop signals the background reaper to terminate.
 func (c *Cache[K, T]) stop() {
 	close(c.done)
 }
