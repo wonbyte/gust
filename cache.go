@@ -45,9 +45,6 @@ type Item[T any] struct {
 }
 
 // State returns the current state of the item by comparing the current time with its expiration.
-// - Returns ok if the item is still valid.
-// - Returns stale if the item is expired but within graceLimit.
-// - Returns expired if the item has exceeded graceLimit.
 func (i *Item[T]) State() state {
 	now := time.Now()
 	if now.Before(i.expires) {
@@ -89,10 +86,6 @@ func New[K comparable, T any](fetcher Fetcher[K, T], ttl time.Duration) *Cache[K
 }
 
 // Get retrieves a cached item by key, fetching it if necessary.
-// - If the key is not found, the fetch is called synchronously.
-// - If the item is stale, Get returns the stale value and triggers an async refresh.
-// - If the item is fully expired, Get fetches a new value synchronously.
-//
 // It returns the value and a boolean indicating whether the value is valid.
 func (c *Cache[K, T]) Get(key K) (T, bool) {
 	c.RLock()
